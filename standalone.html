@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>שיעורים פרטיים | אודליה</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{heebo:['Heebo','sans-serif']}}}}</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Heebo',sans-serif;background:#03030a;color:#fff;direction:rtl;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#0a0a1a}
+::-webkit-scrollbar-thumb{background:rgba(139,92,246,.5);border-radius:3px}
+::selection{background:rgba(168,85,247,.35);color:#fff}
+.gradient-text{background:linear-gradient(135deg,#c084fc,#a855f7,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.glow-text{text-shadow:0 0 20px rgba(168,85,247,.8),0 0 50px rgba(168,85,247,.4)}
+.glass-card{background:rgba(255,255,255,.03);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(168,85,247,.2);border-radius:16px;transition:border-color .3s,box-shadow .3s}
+.glass-card:hover{border-color:rgba(168,85,247,.5);box-shadow:0 0 30px rgba(168,85,247,.15)}
+.btn-primary{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border:none;padding:14px 32px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;box-shadow:0 0 30px rgba(168,85,247,.4);position:relative;overflow:hidden;font-family:'Heebo',sans-serif;display:inline-block;text-decoration:none;text-align:center}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(168,85,247,.7);background:linear-gradient(135deg,#8b5cf6,#c084fc)}
+.btn-primary:active{transform:translateY(0)}
+.slot-available{background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.35);transition:all .25s;cursor:pointer;border-radius:12px;padding:12px 8px;text-align:center;width:100%}
+.slot-available:hover{background:rgba(139,92,246,.2);border-color:rgba(168,85,247,.7);box-shadow:0 0 18px rgba(168,85,247,.25);transform:translateY(-2px)}
+.slot-selected{background:rgba(124,58,237,.4);border:1px solid rgba(168,85,247,.8);border-radius:12px;padding:12px 8px;text-align:center;width:100%;box-shadow:0 0 20px rgba(168,85,247,.3)}
+.slot-booked{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.25);border-radius:12px;padding:12px 8px;text-align:center;width:100%;opacity:.65;cursor:not-allowed}
+.hero-bg{background:radial-gradient(ellipse 100% 60% at 50% -10%,rgba(139,92,246,.3) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 80% 60%,rgba(168,85,247,.1) 0%,transparent 50%),#03030a}
+.section-bg{background:radial-gradient(ellipse 80% 50% at 50% 50%,rgba(139,92,246,.06) 0%,transparent 70%)}
+input,textarea,select{font-family:'Heebo',sans-serif!important}
+@keyframes floatParticle{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100px) rotate(720deg);opacity:0}}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 20px rgba(168,85,247,.3),0 0 40px rgba(168,85,247,.1)}50%{box-shadow:0 0 40px rgba(168,85,247,.7),0 0 80px rgba(168,85,247,.3)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.6);opacity:0}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{100%{transform:rotate(360deg)}}
+@keyframes navScroll{to{background:rgba(0,0,0,.6);backdrop-filter:blur(20px);border-color:rgba(168,85,247,.3);box-shadow:0 4px 30px rgba(168,85,247,.1)}}
+.fade-in-up{animation:fadeInUp .6s ease-out forwards}
+.pulse-ring{animation:pulse-ring 2s ease-out infinite}
+.animate-float{animation:float 6s ease-in-out infinite}
+.animate-glow{animation:glowPulse 2.5s ease-in-out infinite}
+.admin-tab-btn{padding:10px 20px;border-radius:10px;cursor:pointer;font-family:'Heebo',sans-serif;font-weight:600;font-size:.875rem;transition:all .2s;border:1px solid transparent;color:#6b7280}
+.admin-tab-btn:hover{background:rgba(168,85,247,.15);color:#fff}
+.admin-tab-btn.active{background:rgba(168,85,247,.2);border-color:rgba(168,85,247,.4);color:#fff}
+.star-btn{background:none;border:none;cursor:pointer;padding:2px;font-size:1.6rem;transition:transform .15s}
+.star-btn:hover{transform:scale(1.2)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body class="font-heebo">
+
+<!-- ═══ MAIN VIEW ═══ -->
+<div id="view-main">
+
+<!-- NAVBAR -->
+<nav id="navbar" class="fixed top-3 right-3 left-3 z-40 rounded-2xl transition-all duration-300"
+  style="background:rgba(0,0,0,.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.05)">
+  <div class="max-w-6xl mx-auto px-5 py-3.5 flex items-center justify-between">
+    <a href="#hero" class="text-lg font-black gradient-text cursor-pointer">שיעורים פרטיים</a>
+    <div class="hidden md:flex items-center gap-1">
+      <a href="#pricing" class="px-3.5 py-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/8 transition-all text-sm font-medium cursor-pointer">מחירון</a>
+      <a href="#booking" class="px-3.5 py-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/8 transition-all text-sm font-medium cursor-pointer">קביעת שיעור</a>
+      <a href="#testimonials" class="px-3.5 py-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/8 transition-all text-sm font-medium cursor-pointer">המלצות</a>
+      <a href="#payment" class="px-3.5 py-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/8 transition-all text-sm font-medium cursor-pointer">תשלום</a>
+      <a href="#admin" class="mr-1 px-3.5 py-2 rounded-xl text-purple-400 border border-purple-500/30 hover:bg-purple-500/15 hover:border-purple-500/60 transition-all text-sm font-medium cursor-pointer">כניסת מנהל</a>
+    </div>
+    <button id="nav-toggle" class="md:hidden flex flex-col gap-1.5 p-2 cursor-pointer" aria-label="תפריט">
+      <span class="block h-0.5 w-6 bg-white rounded-full transition-all" id="hb1"></span>
+      <span class="block h-0.5 w-6 bg-white rounded-full transition-all" id="hb2"></span>
+      <span class="block h-0.5 w-6 bg-white rounded-full transition-all" id="hb3"></span>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 px-5 py-3 flex flex-col gap-1">
+    <a href="#pricing" class="py-2.5 px-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/5 transition-all text-sm font-medium cursor-pointer mobile-link">מחירון</a>
+    <a href="#booking" class="py-2.5 px-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/5 transition-all text-sm font-medium cursor-pointer mobile-link">קביעת שיעור</a>
+    <a href="#testimonials" class="py-2.5 px-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/5 transition-all text-sm font-medium cursor-pointer mobile-link">המלצות</a>
+    <a href="#payment" class="py-2.5 px-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/5 transition-all text-sm font-medium cursor-pointer mobile-link">תשלום</a>
+    <a href="#admin" class="py-2.5 px-3 rounded-xl text-purple-400 border border-purple-500/30 text-center text-sm font-medium cursor-pointer mobile-link mt-1">כניסת מנהל</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden hero-bg">
+  <div id="particles" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
+  <div class="absolute top-1/4 right-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl pointer-events-none" style="background:radial-gradient(circle,#8b5cf6,transparent)"></div>
+  <div class="absolute bottom-1/4 left-1/4 w-72 h-72 rounded-full opacity-8 blur-3xl pointer-events-none" style="background:radial-gradient(circle,#7c3aed,transparent)"></div>
+  <div class="relative z-10 text-center px-6 max-w-4xl mx-auto pt-28">
+    <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-purple-500/40 text-purple-300 text-sm font-medium mb-8 fade-in-up" style="background:rgba(168,85,247,.1);animation-delay:.1s">
+      <span class="w-2 h-2 rounded-full bg-purple-400" style="animation:glowPulse 2s infinite"></span>
+      שיעורים פרטיים לכיתות א–ח &nbsp;·&nbsp; מקומות מוגבלים
+    </div>
+    <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6 fade-in-up" style="animation-delay:.25s">
+      <span class="text-white">קובעים שיעור פרטי</span><br>
+      <span class="gradient-text glow-text">בקלות</span>
+    </h1>
+    <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed fade-in-up" style="animation-delay:.4s">
+      בחרו זמן פנוי, השתבצו בלחיצה אחת וקבלו אישור ישירות ל־WhatsApp
+    </p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in-up" style="animation-delay:.55s">
+      <a href="#booking" class="btn-primary text-lg">לקביעת שיעור</a>
+      <a href="#testimonials" class="px-8 py-4 rounded-xl text-gray-300 hover:text-white transition-all duration-300 cursor-pointer font-semibold" style="border:1px solid rgba(255,255,255,.15)">המלצות תלמידים</a>
+    </div>
+    <div class="mt-20 grid grid-cols-3 gap-4 max-w-sm mx-auto fade-in-up" style="animation-delay:.7s">
+      <div class="glass-card py-5 px-2 text-center"><div class="text-2xl font-black gradient-text">98%</div><div class="text-xs text-gray-500 mt-1">שביעות רצון</div></div>
+      <div class="glass-card py-5 px-2 text-center"><div class="text-2xl font-black gradient-text">5+</div><div class="text-xs text-gray-500 mt-1">שנות ניסיון</div></div>
+      <div class="glass-card py-5 px-2 text-center"><div class="text-2xl font-black gradient-text">200+</div><div class="text-xs text-gray-500 mt-1">תלמידים</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="py-24 px-6 section-bg">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 text-purple-400 text-sm font-medium mb-4" style="background:rgba(168,85,247,.08)">למה ללמוד איתנו</div>
+      <h2 class="text-4xl md:text-5xl font-black text-white mb-3">הדרך הטובה ביותר להתקדם</h2>
+      <p class="text-gray-400 text-lg">שיעורים פרטיים מקצועיים לכיתות א–ח שמביאים תוצאות</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="glass-card p-7 flex flex-col gap-4">
+        <div class="w-13 h-13 rounded-2xl flex items-center justify-center w-14 h-14" style="background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.3);color:#a855f7">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-7 h-7"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>
+        </div>
+        <div><div class="text-lg font-bold text-white mb-1.5">יחס אישי</div><p class="text-gray-400 text-sm leading-relaxed">כל שיעור מותאם אישית לקצב ולצרכים הייחודיים של כל תלמיד</p></div>
+      </div>
+      <div class="glass-card p-7 flex flex-col gap-4">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center" style="background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.3);color:#8b5cf6">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-7 h-7"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+        </div>
+        <div><div class="text-lg font-bold text-white mb-1.5">זמינות שבועית</div><p class="text-gray-400 text-sm leading-relaxed">יומן שיעורים מתעדכן בכל שבוע עם מגוון שעות נוחות לבחירה</p></div>
+      </div>
+      <div class="glass-card p-7 flex flex-col gap-4">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center" style="background:rgba(192,132,252,.12);border:1px solid rgba(192,132,252,.3);color:#c084fc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-7 h-7"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5z"/></svg>
+        </div>
+        <div><div class="text-lg font-bold text-white mb-1.5">שיעורים מותאמים</div><p class="text-gray-400 text-sm leading-relaxed">חומר לימוד מותאם לתוכנית הלימודים, לרמה ולמטרות האישיות</p></div>
+      </div>
+      <div class="glass-card p-7 flex flex-col gap-4">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center" style="background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.3);color:#7c3aed">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-7 h-7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div><div class="text-lg font-bold text-white mb-1.5">גמישות בשעות</div><p class="text-gray-400 text-sm leading-relaxed">שעות אחר הצהריים ולילה – תמצאו את הזמן שמתאים לכם</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="py-20 px-6 section-bg">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 text-purple-400 text-sm font-medium mb-4" style="background:rgba(168,85,247,.08)">מחירון שקוף ופשוט</div>
+      <h2 class="text-4xl md:text-5xl font-black text-white mb-3">מחיר השיעור</h2>
+      <p class="text-gray-400 text-lg">שיעורים פרטיים לכיתות א–ח</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+      <div class="glass-card p-8 flex flex-col gap-5 hover:-translate-y-1 transition-transform duration-300">
+        <div><div class="text-gray-400 text-sm font-medium mb-1">45 דקות</div>
+          <div class="flex items-end gap-1"><span class="text-5xl font-black text-white leading-none">100</span><span class="text-2xl font-bold text-purple-400 mb-1">₪</span></div></div>
+        <p class="text-gray-400 text-sm">מתאים לשיעורים ממוקדים בנושא אחד</p>
+        <ul class="flex flex-col gap-2">
+          <li class="flex items-center gap-2.5 text-gray-300 text-sm"><svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5" class="w-4 h-4 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>הכנה לבחינה</li>
+          <li class="flex items-center gap-2.5 text-gray-300 text-sm"><svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5" class="w-4 h-4 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>תרגול ממוקד</li>
+          <li class="flex items-center gap-2.5 text-gray-300 text-sm"><svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5" class="w-4 h-4 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>שאלות ותשובות</li>
+        </ul>
+        <a href="#booking" class="btn-primary text-center mt-auto" style="padding:12px 20px;font-size:.9rem">לקביעת שיעור</a>
+      </div>
+      <div class="rounded-2xl p-8 flex flex-col gap-5 hover:-translate-y-1 transition-transform duration-300 relative" style="background:linear-gradient(to bottom,rgba(124,58,237,.22),rgba(76,29,149,.08));border:1px solid rgba(168,85,247,.55);box-shadow:0 0 40px rgba(168,85,247,.18)">
+        <div class="absolute -top-3 right-1/2 translate-x-1/2 px-4 py-1 rounded-full text-white text-xs font-bold whitespace-nowrap" style="background:#7c3aed">הכי פופולרי</div>
+        <div><div class="text-gray-400 text-sm font-medium mb-1">שעה שלמה</div>
+          <div class="flex items-end gap-1"><span class="text-5xl font-black text-white leading-none">125</span><span class="text-2xl font-bold text-purple-400 mb-1">₪</span></div></div>
+        <p class="text-gray-400 text-sm">הכי משתלם – זמן מלא ללמידה עמוקה</p>
+        <ul class="flex flex-col gap-2">
+          <li class="flex items-center gap-2.5 text-gray-300 text-sm"><svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5" class="w-4 h-4 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>כיסוי חומר רחב</li>
+          <li class="flex items-center gap-2.5 text-gray-300 text-sm"><svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5" class="w-4 h-4 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>תרגול מלא</li>
+          <li class="flex items-center gap-2.5 text-gray-300 text-sm"><svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5" class="w-4 h-4 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>הכנה מקיפה</li>
+        </ul>
+        <a href="#booking" class="btn-primary text-center mt-auto" style="padding:12px 20px;font-size:.9rem">לקביעת שיעור</a>
+      </div>
+    </div>
+    <p class="text-center text-gray-600 text-sm mt-8">תשלום לאחר השיעור · אין התחייבות · ביטול חינם עד 24 שעות מראש</p>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking" class="py-24 px-6 relative section-bg">
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 text-purple-400 text-sm font-medium mb-4" style="background:rgba(168,85,247,.08)">
+        <span class="w-2 h-2 rounded-full bg-green-400" style="animation:glowPulse 2s infinite"></span>
+        שיעורים זמינים לשיבוץ
+      </div>
+      <h2 class="text-4xl md:text-5xl font-black text-white mb-3">קביעת שיעור</h2>
+      <p class="text-gray-400 text-lg">בחרו שעה פנויה, הזינו שם ולחצו – זה הכל</p>
+    </div>
+    <div id="booking-content">
+      <div class="text-center text-gray-500 py-12">טוען...</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="py-24 px-6 section-bg">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 text-purple-400 text-sm font-medium mb-4" style="background:rgba(168,85,247,.08)">מה אומרים התלמידים</div>
+      <h2 class="text-4xl md:text-5xl font-black text-white mb-3">המלצות אמיתיות</h2>
+      <p class="text-gray-400 text-lg">ביקורות ממשפחות ותלמידים אמיתיים</p>
+    </div>
+    <div id="testimonials-content"></div>
+  </div>
+</section>
+
+<!-- PAYMENT -->
+<section id="payment" class="py-24 px-6 section-bg">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 text-purple-400 text-sm font-medium mb-4" style="background:rgba(168,85,247,.08)">תשלום מהיר וקל</div>
+      <h2 class="text-4xl md:text-5xl font-black text-white mb-3">תשלום</h2>
+      <p class="text-gray-400 text-lg">העבירו תשלום בביט ישירות</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+      <!-- Bit Card -->
+      <div class="rounded-2xl p-8 flex flex-col items-center text-center relative overflow-hidden" style="background:linear-gradient(135deg,rgba(139,92,246,.12) 0%,rgba(168,85,247,.06) 100%);border:1px solid rgba(168,85,247,.3)">
+        <div class="w-20 h-20 rounded-2xl flex items-center justify-center mb-6" style="background:linear-gradient(135deg,#6028ff,#a855f7);box-shadow:0 0 30px rgba(96,40,255,.4)">
+          <span class="text-white font-black text-3xl" style="font-family:'Heebo',sans-serif">bit</span>
+        </div>
+        <h3 class="text-2xl font-black text-white mb-2">תשלום בביט</h3>
+        <p class="text-gray-400 text-sm mb-8 leading-relaxed">הכי מהיר ונוח – העברה ישירה דרך אפליקציית ביט</p>
+        <a id="bit-link-btn" href="https://www.bitpay.co.il/app/me/8E8440E6-9D9B-4696-537C-D8DF50AD27D899A3" target="_blank" rel="noopener noreferrer" class="btn-primary w-full mb-4" style="padding:13px 20px">פתח ביט לתשלום</a>
+        <p class="text-gray-500 text-xs">לאחר התשלום שלחו אישור ב-WhatsApp</p>
+      </div>
+      <!-- QR + WhatsApp -->
+      <div class="flex flex-col gap-5">
+        <div class="glass-card p-7 flex flex-col items-center text-center flex-1">
+          <h4 class="text-lg font-bold text-white mb-5">סרקו לתשלום מהיר</h4>
+          <div class="w-44 h-44 bg-white rounded-2xl p-2 flex items-center justify-center mb-4">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=168x168&data=https%3A%2F%2Fwww.bitpay.co.il%2Fapp%2Fme%2F8E8440E6-9D9B-4696-537C-D8DF50AD27D899A3" alt="QR קוד לביט" class="w-full h-full object-contain rounded-xl" loading="lazy">
+          </div>
+          <p class="text-gray-500 text-xs">סרקו עם מצלמת הטלפון לתשלום מיידי</p>
+        </div>
+        <a href="https://wa.me/972546254148" target="_blank" rel="noopener noreferrer" class="glass-card p-5 flex items-center gap-4 cursor-pointer" style="text-decoration:none">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#22c55e,#16a34a);box-shadow:0 0 20px rgba(34,197,94,.25)">
+            <svg viewBox="0 0 24 24" fill="white" class="w-7 h-7" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div>
+            <div class="text-sm text-gray-500 mb-0.5">יצירת קשר ישירה</div>
+            <div class="text-white font-bold text-lg" dir="ltr">054-625-4148</div>
+            <div class="text-gray-600 text-xs">לתשלום, שאלות או תיאום</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t py-12 px-6 text-center text-gray-600 text-sm" style="border-color:rgba(255,255,255,.05)">
+  <p class="gradient-text font-bold text-lg mb-2">שיעורים פרטיים | אודליה</p>
+  <p class="mb-4">כיתות א–ח · קביעת שיעור בקלות</p>
+  <div class="flex items-center justify-center gap-3 flex-wrap">
+    <a href="#booking" class="hover:text-purple-400 transition-colors cursor-pointer">קביעת שיעור</a>
+    <span>·</span>
+    <a href="#pricing" class="hover:text-purple-400 transition-colors cursor-pointer">מחירון</a>
+    <span>·</span>
+    <a href="#payment" class="hover:text-purple-400 transition-colors cursor-pointer">תשלום</a>
+    <span>·</span>
+    <a href="#admin" class="hover:text-purple-400 transition-colors cursor-pointer">מנהל</a>
+  </div>
+  <p class="mt-6 text-gray-700 text-xs" id="footer-year"></p>
+</footer>
+
+</div><!-- /view-main -->
+
+<!-- ═══ ADMIN VIEW ═══ -->
+<div id="view-admin" style="display:none;min-height:100vh;background:#03030a"></div>
+
+<!-- WhatsApp Float -->
+<a id="wa-float" href="https://wa.me/972546254148" target="_blank" rel="noopener noreferrer"
+   class="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full flex items-center justify-center"
+   style="background:linear-gradient(135deg,#22c55e,#16a34a);box-shadow:0 0 20px rgba(34,197,94,.4);text-decoration:none"
+   aria-label="פתח WhatsApp">
+  <div class="absolute inset-0 rounded-full pulse-ring" style="background:rgba(34,197,94,.35)"></div>
+  <svg viewBox="0 0 24 24" fill="white" class="w-7 h-7 relative z-10" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- Success Toast -->
+<div id="toast" class="fixed bottom-24 left-1/2 z-50 px-8 py-5 rounded-2xl text-center glass-card border border-green-500/40 transition-all duration-300" style="transform:translateX(-50%) translateY(120px);opacity:0;box-shadow:0 0 30px rgba(34,197,94,.2);pointer-events:none">
+  <div class="flex items-center gap-3 text-white font-semibold text-lg">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" class="w-6 h-6 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <span id="toast-msg">השיעור נקבע בהצלחה!</span>
+  </div>
+  <p id="toast-sub" class="text-gray-400 text-sm mt-1"></p>
+</div>
+
+<script>
+// ════════════════════════════════════════
+//  CONSTANTS & DEFAULTS
+// ════════════════════════════════════════
+const SLOTS_KEY = 'tutoring_slots';
+const SETTINGS_KEY = 'tutoring_settings';
+const TESTIMONIALS_KEY = 'tutoring_testimonials';
+const SESSION_KEY = 'admin_authed';
+
+const DAY_ORDER = ['ראשון','שני','שלישי','רביעי','חמישי','שישי'];
+const DAY_IDX   = {'ראשון':0,'שני':1,'שלישי':2,'רביעי':3,'חמישי':4,'שישי':5};
+const GRADES    = ['א','ב','ג','ד','ה','ו','ז','ח'];
+
+const TMPL = [
+  {day:'ראשון',times:['16:00','17:00','18:00','19:00']},
+  {day:'שני',times:['16:00','17:00','18:00']},
+  {day:'שלישי',times:['16:00','17:00','18:00']},
+  {day:'רביעי',times:['16:00','17:00','18:00']},
+  {day:'חמישי',times:['16:00','17:00']},
+];
+
+const DEF = {teacherName:'אודליה',whatsappNumber:'972546254148',adminPassword:'admin123',
+  bitLink:'https://www.bitpay.co.il/app/me/8E8440E6-9D9B-4696-537C-D8DF50AD27D899A3'};
+
+// ════════════════════════════════════════
+//  STATE
+// ════════════════════════════════════════
+let slots=[], settings={...DEF}, testimonials=[];
+let selSlot=null, selWeekId='', adminTab='schedule';
+let reviewRating=0, adminAuthed=false, adminViewWeekId='';
+
+// ════════════════════════════════════════
+//  STORAGE
+// ════════════════════════════════════════
+function loadAll(){
+  try{
+    const s=localStorage.getItem(SETTINGS_KEY);
+    if(s) settings={...DEF,...JSON.parse(s)};
+    const sl=localStorage.getItem(SLOTS_KEY);
+    slots=sl?JSON.parse(sl):[];
+    const t=localStorage.getItem(TESTIMONIALS_KEY);
+    testimonials=t?JSON.parse(t):[];
+  }catch(e){}
+
+  const today=new Date(), sun=getSun(today), wid=wId(sun);
+  if(!slots.some(s=>s.weekId===wid)){slots=[...slots,...buildWeek(sun)];saveSlots();}
+  if(today.getDay()===4){
+    const ns=new Date(sun); ns.setDate(ns.getDate()+7); const nwid=wId(ns);
+    if(!slots.some(s=>s.weekId===nwid)){slots=[...slots,...buildWeek(ns)];saveSlots();}
+  }
+  selWeekId=wid;
+  if(!adminViewWeekId) adminViewWeekId=wid;
+  adminAuthed=sessionStorage.getItem(SESSION_KEY)==='true';
+}
+function saveSlots(){localStorage.setItem(SLOTS_KEY,JSON.stringify(slots));}
+function saveSett(){localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));}
+function saveTesti(){localStorage.setItem(TESTIMONIALS_KEY,JSON.stringify(testimonials));}
+
+// ════════════════════════════════════════
+//  WEEK UTILS
+// ════════════════════════════════════════
+function getSun(d){const x=new Date(d);x.setDate(x.getDate()-x.getDay());x.setHours(0,0,0,0);return x;}
+function wId(d){return d.toISOString().split('T')[0];}
+function wLabel(wid){
+  const sun=new Date(wid),fri=new Date(wid);fri.setDate(fri.getDate()+5);
+  const o={day:'numeric',month:'numeric'};
+  return sun.toLocaleDateString('he-IL',o)+' – '+fri.toLocaleDateString('he-IL',o);
+}
+function buildWeek(sun){
+  const wid=wId(sun),res=[];
+  TMPL.forEach(({day,times})=>{
+    const sd=new Date(sun); sd.setDate(sd.getDate()+DAY_IDX[day]);
+    times.forEach(t=>res.push({id:`${wid}_${day}_${t}`,day,time:t,date:sd.toISOString().split('T')[0],weekId:wid,isBooked:false,bookedBy:null,bookedAt:null}));
+  });
+  return res;
+}
+function getWeeks(){
+  const m={};
+  slots.forEach(s=>{if(!m[s.weekId])m[s.weekId]=[];m[s.weekId].push(s);});
+  return Object.keys(m).sort().map(wid=>({wid,label:wLabel(wid),slots:m[wid]}));
+}
+
+// ════════════════════════════════════════
+//  BOOKING ACTIONS
+// ════════════════════════════════════════
+function doBook(id,name){
+  const s=slots.find(x=>x.id===id);
+  if(!s||s.isBooked)return false;
+  s.isBooked=true;s.bookedBy=name;s.bookedAt=new Date().toISOString();
+  saveSlots();return true;
+}
+function doCancel(id){const s=slots.find(x=>x.id===id);if(!s)return;s.isBooked=false;s.bookedBy=null;s.bookedAt=null;saveSlots();}
+function doDelete(id){slots=slots.filter(x=>x.id!==id);saveSlots();}
+function doAdd(day,time,wid){
+  const id=`${wid}_${day}_${time}`;if(slots.find(x=>x.id===id))return;
+  const sun=new Date(wid),sd=new Date(wid);sd.setDate(sd.getDate()+DAY_IDX[day]);
+  slots.push({id,day,time,date:sd.toISOString().split('T')[0],weekId:wid,isBooked:false,bookedBy:null,bookedAt:null});
+  saveSlots();
+}
+function doNextWeek(){
+  const ns=new Date(getSun(new Date()));ns.setDate(ns.getDate()+7);const nwid=wId(ns);
+  if(!slots.some(s=>s.weekId===nwid)){slots=[...slots,...buildWeek(ns)];saveSlots();}
+}
+
+// ════════════════════════════════════════
+//  TESTIMONIALS
+// ════════════════════════════════════════
+function addTesti(name,grade,rating,text){
+  testimonials.push({id:'t_'+Date.now(),name,grade:'כיתה '+grade,rating,text,createdAt:new Date().toISOString(),approved:false});
+  saveTesti();
+}
+function approveTesti(id){const t=testimonials.find(x=>x.id===id);if(t){t.approved=true;saveTesti();}}
+function deleteTesti(id){testimonials=testimonials.filter(x=>x.id!==id);saveTesti();}
+
+// ════════════════════════════════════════
+//  TOAST
+// ════════════════════════════════════════
+function showToast(msg,sub=''){
+  const el=document.getElementById('toast');
+  document.getElementById('toast-msg').textContent=msg;
+  document.getElementById('toast-sub').textContent=sub;
+  el.style.transform='translateX(-50%) translateY(0)';
+  el.style.opacity='1';
+  setTimeout(()=>{el.style.transform='translateX(-50%) translateY(120px)';el.style.opacity='0';},4000);
+}
+
+// ════════════════════════════════════════
+//  BOOKING RENDER
+// ════════════════════════════════════════
+function renderBooking(){
+  const wrap=document.getElementById('booking-content');
+  const weeks=getWeeks();
+  if(!weeks.length){wrap.innerHTML='<div class="glass-card p-16 text-center text-gray-500 text-lg">אין שעות זמינות לשבוע זה</div>';return;}
+
+  // week tabs
+  let wTabs='';
+  if(weeks.length>1){
+    wTabs='<div class="flex flex-wrap justify-center gap-2 mb-8">';
+    weeks.forEach(w=>{
+      const active=w.wid===selWeekId;
+      wTabs+=`<button onclick="selWeekId='${w.wid}';renderBooking()" class="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer" style="${active?'background:rgba(124,58,237,.7);border:1px solid rgba(168,85,247,.6);color:#fff;box-shadow:0 4px 20px rgba(168,85,247,.2)':'background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:#9ca3af'}">שבוע ${w.label}</button>`;
+    });
+    wTabs+='</div>';
+  }
+
+  const curWeek=weeks.find(w=>w.wid===selWeekId)||weeks[0];
+  if(selWeekId!==curWeek.wid){selWeekId=curWeek.wid;}
+  const daysWithSlots=DAY_ORDER.filter(d=>curWeek.slots.some(s=>s.day===d));
+
+  const cols=daysWithSlots.length<=2?'grid-cols-'+daysWithSlots.length:daysWithSlots.length<=3?'grid-cols-3':'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6';
+
+  let grid='<div class="grid '+cols+' gap-4">';
+  daysWithSlots.forEach(day=>{
+    const daySlots=curWeek.slots.filter(s=>s.day===day).sort((a,b)=>a.time.localeCompare(b.time));
+    grid+=`<div class="glass-card overflow-hidden"><div class="py-3 px-4 text-center border-b" style="background:rgba(168,85,247,.12);border-color:rgba(168,85,247,.2)"><span class="text-purple-300 font-bold">יום ${day}</span></div><div class="p-3 flex flex-col gap-2">`;
+    daySlots.forEach(slot=>{
+      if(slot.isBooked){
+        grid+=`<div class="slot-booked"><div class="text-base font-bold text-red-400">${slot.time}</div><div class="text-xs text-red-500 mt-0.5">תפוס</div></div>`;
+      } else if(selSlot===slot.id){
+        grid+=`<button onclick="selSlot=null;renderBooking()" class="slot-selected cursor-pointer"><div class="text-base font-bold text-white">${slot.time}</div><div class="text-xs text-purple-300 mt-0.5">נבחר ✓</div></button>`;
+      } else {
+        grid+=`<button onclick="selSlot='${slot.id}';renderBooking()" class="slot-available"><div class="text-base font-bold text-purple-300">${slot.time}</div><div class="text-xs text-gray-500 mt-0.5">פנוי</div></button>`;
+      }
+    });
+    grid+=`</div></div>`;
+  });
+  grid+='</div>';
+
+  // booking form
+  let form='';
+  if(selSlot){
+    const s=slots.find(x=>x.id===selSlot);
+    if(s && !s.isBooked){
+      form=`<div class="mt-8 max-w-md mx-auto glass-card p-8 fade-in-up" style="border-color:rgba(168,85,247,.4);box-shadow:0 0 40px rgba(168,85,247,.15)">
+        <div class="text-center mb-6">
+          <div class="text-2xl font-bold text-white mb-1">יום ${s.day} | ${s.time}</div>
+          <div class="text-gray-400 text-sm">הזינו שם לאישור השיעור</div>
+        </div>
+        <input id="student-name-inp" type="text" placeholder="שם מלא" onkeydown="if(event.key==='Enter')submitBook()"
+          class="w-full rounded-xl px-5 py-3.5 text-white placeholder-gray-600 outline-none mb-4 text-base"
+          style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);transition:border-color .2s"
+          onfocus="this.style.borderColor='rgba(168,85,247,.6)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'" dir="rtl">
+        <div class="flex gap-3">
+          <button onclick="submitBook()" class="btn-primary flex-1" style="padding:12px 16px">קבע שיעור</button>
+          <button onclick="selSlot=null;renderBooking()" class="px-5 py-3 rounded-xl text-gray-400 hover:text-white transition-all cursor-pointer font-medium" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)">ביטול</button>
+        </div>
+      </div>`;
+    }
+  }
+
+  wrap.innerHTML=wTabs+grid+form;
+  // auto-focus input
+  const inp=document.getElementById('student-name-inp');
+  if(inp) setTimeout(()=>inp.focus(),50);
+}
+
+function submitBook(){
+  const inp=document.getElementById('student-name-inp');
+  if(!inp||!inp.value.trim())return;
+  const name=inp.value.trim();
+  if(doBook(selSlot,name)){
+    const s=slots.find(x=>x.id===selSlot);
+    const msg=encodeURIComponent('היי '+settings.teacherName+', זה '+name+'.\nקבעתי שיעור ביום '+s.day+' בשעה '+s.time);
+    window.open('https://wa.me/'+settings.whatsappNumber+'?text='+msg,'_blank');
+    showToast('השיעור נקבע בהצלחה!','יום '+s.day+' בשעה '+s.time+' · WhatsApp נפתח');
+    selSlot=null;
+    renderBooking();
+  }
+}
+
+// ════════════════════════════════════════
+//  TESTIMONIALS RENDER
+// ════════════════════════════════════════
+function renderTestimonials(){
+  const wrap=document.getElementById('testimonials-content');
+  const approved=testimonials.filter(t=>t.approved);
+
+  let grid='';
+  if(!approved.length){
+    grid=`<div class="glass-card p-14 text-center mb-8">
+      <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4" style="background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.2)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="1.5" class="w-7 h-7"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>
+      </div>
+      <p class="text-gray-500 font-medium mb-1">אין ביקורות עדיין</p>
+      <p class="text-gray-600 text-sm">היו הראשונים לשתף את החוויה שלכם!</p>
+    </div>`;
+  } else {
+    grid='<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">';
+    approved.forEach(t=>{
+      const stars='★'.repeat(t.rating)+'☆'.repeat(5-t.rating);
+      grid+=`<div class="glass-card p-7 flex flex-col gap-4">
+        <div class="text-yellow-400 text-lg">${stars}</div>
+        <p class="text-gray-300 text-sm leading-relaxed flex-1">&ldquo;${escHtml(t.text)}&rdquo;</p>
+        <div class="flex items-center gap-3 pt-3 border-t" style="border-color:rgba(255,255,255,.05)">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center text-purple-300 font-bold text-sm flex-shrink-0" style="background:rgba(168,85,247,.18);border:1px solid rgba(168,85,247,.3)">${t.name[0]}</div>
+          <div><div class="text-white font-semibold text-sm">${escHtml(t.name)}</div><div class="text-gray-600 text-xs">${escHtml(t.grade)}</div></div>
+        </div>
+      </div>`;
+    });
+    grid+='</div>';
+  }
+
+  const formHtml=`<div class="max-w-md mx-auto">
+    <div id="testi-form-wrap">
+      <div class="text-center">
+        <button onclick="showTestiForm()" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl border text-purple-300 hover:text-white transition-all cursor-pointer font-semibold" style="border-color:rgba(168,85,247,.35);background:rgba(168,85,247,.1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          השאירו ביקורת
+        </button>
+      </div>
+    </div>
+  </div>`;
+
+  wrap.innerHTML=grid+formHtml;
+}
+
+function showTestiForm(){
+  document.getElementById('testi-form-wrap').innerHTML=`
+    <div class="glass-card p-7 fade-in-up" style="border-color:rgba(168,85,247,.35);box-shadow:0 0 30px rgba(168,85,247,.1)">
+      <h3 class="text-white font-bold text-lg mb-5">השאירו ביקורת</h3>
+      <div class="flex flex-col gap-4">
+        <div>
+          <label class="text-gray-400 text-sm mb-1.5 block">שם מלא</label>
+          <input id="ti-name" type="text" placeholder="השם שלך" class="w-full rounded-xl px-4 py-3 text-white placeholder-gray-600 outline-none text-sm" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:border-color .2s" onfocus="this.style.borderColor='rgba(168,85,247,.6)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
+        </div>
+        <div>
+          <label class="text-gray-400 text-sm mb-1.5 block">כיתה</label>
+          <select id="ti-grade" class="w-full rounded-xl px-4 py-3 text-white text-sm cursor-pointer outline-none" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)">
+            ${GRADES.map(g=>`<option value="${g}" style="background:#1a1a2e">כיתה ${g}</option>`).join('')}
+          </select>
+        </div>
+        <div>
+          <label class="text-gray-400 text-sm mb-2 block">דירוג</label>
+          <div id="star-row" class="flex gap-1" style="direction:ltr">
+            ${[1,2,3,4,5].map(i=>`<button class="star-btn text-2xl" onclick="setStars(${i})" data-star="${i}" aria-label="${i} כוכבים">☆</button>`).join('')}
+          </div>
+        </div>
+        <div>
+          <label class="text-gray-400 text-sm mb-1.5 block">ביקורת</label>
+          <textarea id="ti-text" placeholder="ספרו על החוויה שלכם..." rows="3" class="w-full rounded-xl px-4 py-3 text-white placeholder-gray-600 outline-none text-sm resize-none" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:border-color .2s" onfocus="this.style.borderColor='rgba(168,85,247,.6)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'"></textarea>
+        </div>
+        <div class="flex gap-3 pt-1">
+          <button onclick="submitTesti()" class="btn-primary flex-1" style="padding:12px 16px">שלח ביקורת</button>
+          <button onclick="renderTestimonials()" class="px-5 py-3 rounded-xl text-gray-400 hover:text-white transition-all cursor-pointer font-medium" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)">ביטול</button>
+        </div>
+        <p class="text-gray-600 text-xs text-center">הביקורת תפורסם לאחר אישור המורה</p>
+      </div>
+    </div>`;
+}
+
+function setStars(n){
+  reviewRating=n;
+  document.querySelectorAll('#star-row .star-btn').forEach((b,i)=>b.textContent=i<n?'★':'☆');
+}
+
+function submitTesti(){
+  const name=(document.getElementById('ti-name')||{}).value||'';
+  const grade=(document.getElementById('ti-grade')||{}).value||'א';
+  const text=(document.getElementById('ti-text')||{}).value||'';
+  if(!name.trim()){alert('נא להזין שם');return;}
+  if(!reviewRating){alert('נא לבחור דירוג');return;}
+  if(text.trim().length<5){alert('נא לכתוב לפחות 5 תווים');return;}
+  addTesti(name.trim(),grade,reviewRating,text.trim());
+  reviewRating=0;
+  showToast('תודה על הביקורת!','תפורסם לאחר אישור המורה');
+  renderTestimonials();
+}
+
+// ════════════════════════════════════════
+//  ADMIN RENDER
+// ════════════════════════════════════════
+function renderAdmin(){
+  const el=document.getElementById('view-admin');
+  if(!adminAuthed){renderAdminLogin(el);return;}
+  renderAdminDash(el);
+}
+
+function renderAdminLogin(el){
+  el.innerHTML=`
+  <div class="min-h-screen hero-bg flex items-center justify-center px-6">
+    <div class="w-full max-w-sm">
+      <div class="glass-card p-10 fade-in-up" style="border-color:rgba(168,85,247,.3);box-shadow:0 0 60px rgba(168,85,247,.1)">
+        <div class="text-center mb-8">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4" style="background:linear-gradient(135deg,#7c3aed,#a855f7);box-shadow:0 0 30px rgba(168,85,247,.4)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+          </div>
+          <h1 class="text-2xl font-black text-white">כניסת מנהל</h1>
+          <p class="text-gray-500 text-sm mt-1">הזינו סיסמת מנהל</p>
+        </div>
+        <input id="admin-pw" type="password" placeholder="סיסמה" dir="ltr"
+          onkeydown="if(event.key==='Enter')tryLogin()"
+          class="w-full rounded-xl px-5 py-3.5 text-white placeholder-gray-600 outline-none mb-4 text-base"
+          style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);transition:border-color .2s"
+          onfocus="this.style.borderColor='rgba(168,85,247,.6)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'">
+        <p id="pw-err" class="text-red-400 text-sm text-center mb-3 hidden">סיסמה שגויה</p>
+        <button onclick="tryLogin()" class="btn-primary w-full" style="padding:14px 20px">כניסה</button>
+        <p class="text-center mt-3 text-gray-600 text-xs">סיסמה ברירת מחדל: admin123</p>
+        <div class="mt-5 text-center"><a href="#" class="text-purple-500 hover:text-purple-400 text-sm cursor-pointer">← חזרה לאתר</a></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function tryLogin(){
+  const pw=(document.getElementById('admin-pw')||{}).value||'';
+  if(pw===settings.adminPassword){
+    adminAuthed=true;sessionStorage.setItem(SESSION_KEY,'true');
+    renderAdminDash(document.getElementById('view-admin'));
+  } else {
+    const e=document.getElementById('pw-err');if(e)e.classList.remove('hidden');
+  }
+}
+
+function renderAdminDash(el){
+  const booked=slots.filter(s=>s.isBooked);
+  const today=new Date(), sun=getSun(today), cwid=wId(sun);
+  const twBooked=booked.filter(s=>s.weekId===cwid).length;
+  const twFree=slots.filter(s=>s.weekId===cwid&&!s.isBooked).length;
+  const twTotal=slots.filter(s=>s.weekId===cwid).length;
+  const weeks=getWeeks();
+  const pendingT=testimonials.filter(t=>!t.approved);
+
+  const tabs=[
+    {id:'schedule',label:'ניהול יומן'},
+    {id:'bookings',label:'תלמידים ('+booked.length+')'},
+    {id:'reviews',label:'ביקורות'+(pendingT.length?' ('+pendingT.length+')':'')},
+    {id:'analytics',label:'סטטיסטיקה'},
+    {id:'settings',label:'הגדרות'},
+  ];
+
+  let tabBtns=tabs.map(t=>`<button onclick="adminTab='${t.id}';renderAdminDash(document.getElementById('view-admin'))" class="admin-tab-btn whitespace-nowrap ${adminTab===t.id?'active':''}">${t.label}</button>`).join('');
+
+  let content='';
+  if(!adminViewWeekId||!weeks.find(w=>w.wid===adminViewWeekId)) adminViewWeekId=cwid;
+  if(adminTab==='schedule') content=renderAdminSchedule(weeks,adminViewWeekId);
+  else if(adminTab==='bookings') content=renderAdminBookings(booked);
+  else if(adminTab==='reviews') content=renderAdminReviews();
+  else if(adminTab==='analytics') content=renderAdminAnalytics(weeks);
+  else if(adminTab==='settings') content=renderAdminSettings();
+
+  el.innerHTML=`
+  <div style="background:#03030a;min-height:100vh">
+    <!-- Admin Navbar -->
+    <div class="sticky top-0 z-30 border-b px-6 py-4 flex items-center justify-between" style="background:rgba(0,0,0,.5);backdrop-filter:blur(20px);border-color:rgba(255,255,255,.05)">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">
+          <svg viewBox="0 0 24 24" fill="white" class="w-4 h-4"><path fill-rule="evenodd" d="M3 6a3 3 0 013-3h2.25a3 3 0 013 3v2.25a3 3 0 01-3 3H6a3 3 0 01-3-3V6zm9.75 0a3 3 0 013-3H18a3 3 0 013 3v2.25a3 3 0 01-3 3h-2.25a3 3 0 01-3-3V6zM3 15.75a3 3 0 013-3h2.25a3 3 0 013 3V18a3 3 0 01-3 3H6a3 3 0 01-3-3v-2.25zm9.75 0a3 3 0 013-3H18a3 3 0 013 3V18a3 3 0 01-3 3h-2.25a3 3 0 01-3-3v-2.25z" clip-rule="evenodd"/></svg>
+        </div>
+        <span class="text-white font-bold">דאשבורד מנהל</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#" class="text-gray-500 hover:text-white text-sm cursor-pointer">← אתר ראשי</a>
+        <button onclick="adminAuthed=false;sessionStorage.removeItem('${SESSION_KEY}');renderAdmin()" class="text-gray-600 hover:text-red-400 text-sm cursor-pointer">יציאה</button>
+      </div>
+    </div>
+    <!-- Stats -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        ${adminStatCard('שובצו השבוע',twBooked,'#a855f7','M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z')}
+        ${adminStatCard('שעות פנויות',twFree,'#22c55e','M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5')}
+        ${adminStatCard('סה"כ השבוע',twTotal,'#8b5cf6','M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3')}
+        ${adminStatCard('כלל השיבוצים',booked.length,'#f59e0b','M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0')}
+      </div>
+      <!-- Tabs -->
+      <div class="flex gap-1 mb-5 overflow-x-auto pb-1">${tabBtns}</div>
+      <!-- Content -->
+      <div class="pb-12">${content}</div>
+    </div>
+  </div>`;
+}
+
+function adminStatCard(label,val,color,path){
+  return `<div class="glass-card p-5"><div class="flex items-center gap-3 mb-2">
+    <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:${color}18;border:1px solid ${color}30">
+      <svg viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="2" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="${path}"/></svg>
+    </div>
+    <span class="text-gray-400 text-xs font-medium">${label}</span>
+  </div><div class="text-3xl font-black" style="color:${color}">${val}</div></div>`;
+}
+
+function renderAdminSchedule(weeks,cwid){
+  const weekOpts=weeks.map(w=>`<option value="${w.wid}" ${w.wid===cwid?'selected':''} style="background:#1a1a2e">שבוע ${w.label}</option>`).join('');
+  const dayOpts=DAY_ORDER.map(d=>`<option value="${d}" style="background:#1a1a2e">יום ${d}</option>`).join('');
+  const selWeek=weeks.find(w=>w.wid===cwid)||weeks[0];
+  if(!selWeek) return '<div class="glass-card p-10 text-center text-gray-500">אין שבועות</div>';
+
+  let slotRows='';
+  DAY_ORDER.forEach(day=>{
+    const ds=selWeek.slots.filter(s=>s.day===day).sort((a,b)=>a.time.localeCompare(b.time));
+    if(!ds.length)return;
+    slotRows+=`<div class="text-purple-400 text-xs font-semibold mb-1.5 px-1">יום ${day}</div>`;
+    ds.forEach(sl=>{
+      slotRows+=`<div class="flex items-center justify-between rounded-xl px-4 py-2.5 mb-1 ${sl.isBooked?'border border-red-500/20':'border border-white/6'}" style="${sl.isBooked?'background:rgba(239,68,68,.07)':'background:rgba(255,255,255,.03)'}">
+        <div class="flex items-center gap-3">
+          <span class="text-white font-semibold text-sm" dir="ltr">${sl.time}</span>
+          ${sl.isBooked?`<span class="text-sm text-white">${escHtml(sl.bookedBy||'')}</span>`:''}
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs px-2.5 py-0.5 rounded-full font-medium ${sl.isBooked?'text-red-400':'text-green-400'}" style="${sl.isBooked?'background:rgba(239,68,68,.18)':'background:rgba(34,197,94,.18)'}">${sl.isBooked?'תפוס':'פנוי'}</span>
+          ${sl.isBooked?`<button onclick="adminCancel('${sl.id}')" class="text-xs px-2 py-1 rounded-lg cursor-pointer transition-all" style="color:#fb923c;background:rgba(251,146,60,.08)" onmouseover="this.style.background='rgba(251,146,60,.18)'" onmouseout="this.style.background='rgba(251,146,60,.08)'">שחרר</button>`:''}
+          <button onclick="adminDel('${sl.id}')" class="p-1 rounded-lg cursor-pointer transition-all" style="color:#4b5563" onmouseover="this.style.color='#f87171';this.style.background='rgba(248,113,113,.1)'" onmouseout="this.style.color='#4b5563';this.style.background=''" aria-label="מחק">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"/></svg>
+          </button>
+        </div>
+      </div>`;
+    });
+  });
+
+  return `<div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+    <div class="glass-card p-6">
+      <h3 class="text-white font-bold text-lg mb-5">הוסף שעה</h3>
+      <div class="flex flex-col gap-3">
+        <div><label class="text-gray-500 text-xs mb-1.5 block">שבוע</label>
+          <select id="add-wid" class="w-full rounded-xl px-4 py-3 text-white text-sm outline-none cursor-pointer" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)">${weekOpts}</select></div>
+        <div><label class="text-gray-500 text-xs mb-1.5 block">יום</label>
+          <select id="add-day" class="w-full rounded-xl px-4 py-3 text-white text-sm outline-none cursor-pointer" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)">${dayOpts}</select></div>
+        <div><label class="text-gray-500 text-xs mb-1.5 block">שעה</label>
+          <input id="add-time" type="time" value="16:00" dir="ltr" class="w-full rounded-xl px-4 py-3 text-white text-sm outline-none" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)"></div>
+        <button onclick="adminAddSlot()" class="btn-primary w-full mt-1" style="padding:12px 16px">הוסף שעה</button>
+        <button onclick="doNextWeek();renderAdminDash(document.getElementById('view-admin'))" class="w-full px-4 py-3 rounded-xl text-purple-300 font-medium cursor-pointer transition-all text-sm" style="border:1px solid rgba(168,85,247,.3);background:rgba(168,85,247,.1)">פתח שבוע הבא אוטומטית</button>
+      </div>
+    </div>
+    <div class="lg:col-span-2 glass-card p-6">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="text-white font-bold text-lg">שעות בשבוע</h3>
+        <select onchange="adminChangeWeek(this.value)" class="rounded-xl px-3 py-2 text-gray-400 text-sm outline-none cursor-pointer" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)">${weekOpts}</select>
+      </div>
+      <div class="space-y-1 max-h-96 overflow-y-auto">${slotRows||'<div class="text-center text-gray-600 py-8">אין שעות לשבוע זה</div>'}</div>
+    </div>
+  </div>`;
+}
+
+function adminAddSlot(){
+  const day=document.getElementById('add-day').value;
+  const time=document.getElementById('add-time').value;
+  const wid=document.getElementById('add-wid').value;
+  doAdd(day,time,wid);
+  renderAdminDash(document.getElementById('view-admin'));
+}
+function adminCancel(id){doCancel(id);renderAdminDash(document.getElementById('view-admin'));}
+function adminDel(id){doDelete(id);renderAdminDash(document.getElementById('view-admin'));}
+function adminChangeWeek(wid){adminViewWeekId=wid;renderAdminDash(document.getElementById('view-admin'));}
+
+function renderAdminBookings(booked){
+  if(!booked.length) return '<div class="glass-card p-16 text-center text-gray-500 text-lg">אין תלמידים משובצים עדיין</div>';
+  let rows=booked.sort((a,b)=>b.weekId.localeCompare(a.weekId)).map(s=>`
+    <tr class="border-b transition-colors" style="border-color:rgba(255,255,255,.04)">
+      <td class="px-5 py-3 text-white font-medium">${escHtml(s.bookedBy||'')}</td>
+      <td class="px-5 py-3 text-gray-400">יום ${s.day}</td>
+      <td class="px-5 py-3 text-purple-400 font-semibold" dir="ltr">${s.time}</td>
+      <td class="px-5 py-3 text-gray-500 text-xs" dir="ltr">${s.date}</td>
+      <td class="px-5 py-3"><button onclick="adminCancel('${s.id}')" class="text-xs px-3 py-1 rounded-lg cursor-pointer" style="color:#f87171;background:rgba(248,113,113,.1)">בטל</button></td>
+    </tr>`).join('');
+  return `<div class="glass-card overflow-hidden">
+    <div class="px-5 py-4 border-b" style="border-color:rgba(255,255,255,.05)"><h3 class="text-white font-bold text-lg">כל השיבוצים (${booked.length})</h3></div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead><tr class="border-b text-gray-500 text-xs" style="border-color:rgba(255,255,255,.05)">
+          <th class="text-right px-5 py-3 font-medium">שם</th>
+          <th class="text-right px-5 py-3 font-medium">יום</th>
+          <th class="text-right px-5 py-3 font-medium">שעה</th>
+          <th class="text-right px-5 py-3 font-medium">תאריך</th>
+          <th class="px-5 py-3"></th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function renderAdminReviews(){
+  const pending=testimonials.filter(t=>!t.approved);
+  const approved=testimonials.filter(t=>t.approved);
+  const mkRow=(t,isPending)=>`<div class="px-5 py-4 flex items-start justify-between gap-4 border-b" style="border-color:rgba(255,255,255,.04)">
+    <div class="flex-1">
+      <div class="flex items-center gap-2 mb-1 flex-wrap">
+        <span class="text-white font-semibold">${escHtml(t.name)}</span>
+        <span class="text-gray-600 text-xs">${escHtml(t.grade)}</span>
+        <span class="text-yellow-400 text-xs">${'★'.repeat(t.rating)}</span>
+      </div>
+      <p class="text-gray-400 text-sm">&ldquo;${escHtml(t.text)}&rdquo;</p>
+    </div>
+    <div class="flex items-center gap-2 flex-shrink-0">
+      ${isPending?`<button onclick="adminApproveTesti('${t.id}')" class="px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer" style="background:rgba(34,197,94,.15);color:#4ade80">אשר</button>`:''}
+      <button onclick="adminDeleteTesti('${t.id}')" class="px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer" style="background:rgba(248,113,113,.1);color:#f87171">מחק</button>
+    </div>
+  </div>`;
+
+  return `<div class="space-y-5">
+    <div class="glass-card overflow-hidden">
+      <div class="px-5 py-4 border-b flex items-center gap-3" style="border-color:rgba(255,255,255,.05)">
+        <h3 class="text-white font-bold text-lg">ממתינות לאישור</h3>
+        ${pending.length?`<span class="px-2.5 py-0.5 rounded-full text-xs font-bold" style="background:rgba(234,179,8,.2);color:#fbbf24">${pending.length}</span>`:''}
+      </div>
+      ${pending.length?pending.map(t=>mkRow(t,true)).join(''):'<div class="text-center text-gray-600 py-8">אין ביקורות ממתינות</div>'}
+    </div>
+    <div class="glass-card overflow-hidden">
+      <div class="px-5 py-4 border-b flex items-center gap-3" style="border-color:rgba(255,255,255,.05)">
+        <h3 class="text-white font-bold text-lg">מאושרות</h3>
+        <span class="px-2.5 py-0.5 rounded-full text-xs font-bold" style="background:rgba(34,197,94,.18);color:#4ade80">${approved.length}</span>
+      </div>
+      ${approved.length?approved.map(t=>mkRow(t,false)).join(''):'<div class="text-center text-gray-600 py-8">אין ביקורות מאושרות</div>'}
+    </div>
+  </div>`;
+}
+
+function adminApproveTesti(id){approveTesti(id);renderAdminDash(document.getElementById('view-admin'));}
+function adminDeleteTesti(id){deleteTesti(id);renderAdminDash(document.getElementById('view-admin'));}
+
+function renderAdminAnalytics(weeks){
+  if(!weeks.length) return '<div class="glass-card p-10 text-center text-gray-500">אין נתונים</div>';
+  const cards=weeks.map(w=>{
+    const booked=w.slots.filter(s=>s.isBooked).length;
+    const total=w.slots.length;
+    const pct=total?Math.round(booked/total*100):0;
+    return `<div class="glass-card p-6">
+      <div class="flex items-center justify-between mb-4">
+        <div><h4 class="text-white font-bold">שבוע ${w.label}</h4><div class="text-gray-600 text-xs" dir="ltr">${w.wid}</div></div>
+        <div class="text-3xl font-black" style="color:${pct>50?'#a855f7':'#22c55e'}">${pct}%</div>
+      </div>
+      <div class="w-full h-2 rounded-full mb-4" style="background:rgba(255,255,255,.05)">
+        <div class="h-full rounded-full" style="width:${pct}%;background:linear-gradient(90deg,#7c3aed,#a855f7);transition:width .8s"></div>
+      </div>
+      <div class="flex justify-between text-sm">
+        <span class="text-gray-500">שובצו: <span class="text-purple-400 font-bold">${booked}</span></span>
+        <span class="text-gray-500">פנויות: <span class="text-green-400 font-bold">${total-booked}</span></span>
+        <span class="text-gray-500">סה"כ: <span class="text-white font-bold">${total}</span></span>
+      </div>
+    </div>`;
+  }).join('');
+  return `<div class="grid grid-cols-1 md:grid-cols-2 gap-5">${cards}</div>`;
+}
+
+function renderAdminSettings(){
+  return `<div class="max-w-lg">
+    <div class="glass-card p-7">
+      <h3 class="text-white font-bold text-lg mb-6">הגדרות המערכת</h3>
+      <div class="flex flex-col gap-4">
+        <div><label class="text-gray-400 text-sm mb-1.5 block">שם המורה</label>
+          <input id="set-name" type="text" value="${escHtml(settings.teacherName)}" class="w-full rounded-xl px-4 py-3 text-white outline-none text-sm" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:border-color .2s" onfocus="this.style.borderColor='rgba(168,85,247,.6)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'"></div>
+        <div><label class="text-gray-400 text-sm mb-1.5 block">מספר WhatsApp</label>
+          <input id="set-wa" type="text" value="${escHtml(settings.whatsappNumber)}" dir="ltr" placeholder="972XXXXXXXXX" class="w-full rounded-xl px-4 py-3 text-white outline-none text-sm" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:border-color .2s" onfocus="this.style.borderColor='rgba(168,85,247,.6)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
+          <p class="text-gray-600 text-xs mt-1">פורמט: 972XXXXXXXXX (ללא +)</p></div>
+        <div><label class="text-gray-400 text-sm mb-1.5 block">לינק ביט לתשלום</label>
+          <input id="set-bit" type="text" value="${escHtml(settings.bitLink)}" dir="ltr" placeholder="https://bit.ly/..." class="w-full rounded-xl px-4 py-3 text-white outline-none text-sm" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:border-color .2s" onfocus="this.style.borderColor='rgba(168,85,247,.6)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'"></div>
+        <div><label class="text-gray-400 text-sm mb-1.5 block">סיסמת מנהל</label>
+          <input id="set-pw" type="password" value="${escHtml(settings.adminPassword)}" dir="ltr" class="w-full rounded-xl px-4 py-3 text-white outline-none text-sm" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:border-color .2s" onfocus="this.style.borderColor='rgba(168,85,247,.6)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'"></div>
+        <button onclick="saveAdminSettings()" id="save-set-btn" class="btn-primary w-full mt-2" style="padding:13px 16px">שמור הגדרות</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function saveAdminSettings(){
+  settings.teacherName=document.getElementById('set-name').value.trim()||settings.teacherName;
+  settings.whatsappNumber=document.getElementById('set-wa').value.trim()||settings.whatsappNumber;
+  settings.bitLink=document.getElementById('set-bit').value.trim();
+  settings.adminPassword=document.getElementById('set-pw').value||settings.adminPassword;
+  saveSett();
+  // update bit link on main page
+  const btn=document.getElementById('bit-link-btn');
+  if(btn&&settings.bitLink)btn.href=settings.bitLink;
+  const b=document.getElementById('save-set-btn');
+  if(b){b.textContent='נשמר!';setTimeout(()=>{b.textContent='שמור הגדרות';},2000);}
+}
+
+// ════════════════════════════════════════
+//  HELPERS
+// ════════════════════════════════════════
+function escHtml(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ════════════════════════════════════════
+//  ROUTING
+// ════════════════════════════════════════
+function handleRoute(){
+  const hash=window.location.hash;
+  const main=document.getElementById('view-main');
+  const adm=document.getElementById('view-admin');
+  if(hash==='#admin'){
+    main.style.display='none';
+    adm.style.display='block';
+    renderAdmin();
+  } else {
+    main.style.display='block';
+    adm.style.display='none';
+  }
+}
+
+// ════════════════════════════════════════
+//  NAVBAR SCROLL
+// ════════════════════════════════════════
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('navbar');
+  if(!nav)return;
+  if(window.scrollY>40){
+    nav.style.background='rgba(0,0,0,.65)';
+    nav.style.backdropFilter='blur(20px)';
+    nav.style.borderColor='rgba(168,85,247,.3)';
+    nav.style.boxShadow='0 4px 30px rgba(168,85,247,.1)';
+  } else {
+    nav.style.background='rgba(0,0,0,.2)';
+    nav.style.backdropFilter='blur(10px)';
+    nav.style.borderColor='rgba(255,255,255,.05)';
+    nav.style.boxShadow='none';
+  }
+});
+
+// ════════════════════════════════════════
+//  HAMBURGER
+// ════════════════════════════════════════
+document.getElementById('nav-toggle').addEventListener('click',()=>{
+  const menu=document.getElementById('mobile-menu');
+  const open=menu.classList.toggle('hidden');
+  document.getElementById('hb1').style.transform=open?'':'rotate(45deg) translate(7px,7px)';
+  document.getElementById('hb2').style.opacity=open?'1':'0';
+  document.getElementById('hb3').style.transform=open?'':'rotate(-45deg) translate(7px,-7px)';
+});
+document.querySelectorAll('.mobile-link').forEach(a=>a.addEventListener('click',()=>{
+  document.getElementById('mobile-menu').classList.add('hidden');
+  document.getElementById('hb1').style.transform='';
+  document.getElementById('hb2').style.opacity='1';
+  document.getElementById('hb3').style.transform='';
+}));
+
+// ════════════════════════════════════════
+//  PARTICLES
+// ════════════════════════════════════════
+function spawnParticles(){
+  const c=document.getElementById('particles');
+  if(!c)return;
+  for(let i=0;i<18;i++){
+    const d=document.createElement('div');
+    const sz=Math.random()*4+2;
+    Object.assign(d.style,{
+      position:'absolute',borderRadius:'50%',pointerEvents:'none',
+      width:sz+'px',height:sz+'px',
+      left:Math.random()*100+'%',
+      background:`rgba(168,85,247,${Math.random()*.5+.2})`,
+      boxShadow:`0 0 ${sz*2}px rgba(168,85,247,.6)`,
+      animationName:'floatParticle',
+      animationDuration:(Math.random()*12+10)+'s',
+      animationDelay:Math.random()*8+'s',
+      animationTimingFunction:'linear',
+      animationIterationCount:'infinite',
+    });
+    c.appendChild(d);
+  }
+}
+
+// ════════════════════════════════════════
+//  INIT
+// ════════════════════════════════════════
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('footer-year').textContent='© '+new Date().getFullYear()+' כל הזכויות שמורות';
+  loadAll();
+  spawnParticles();
+  renderBooking();
+  renderTestimonials();
+  handleRoute();
+  window.addEventListener('hashchange',handleRoute);
+});
+</script>
+</body>
+</html>
